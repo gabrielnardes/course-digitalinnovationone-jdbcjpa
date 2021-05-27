@@ -93,4 +93,28 @@ public class AlunoDAO {
             e.printStackTrace();
         }
     }
+
+    // 5 - Update
+    public void update(Aluno aluno) {
+        try (Connection conn = ConnectionFactory.getConnection()) {
+            String sql = "UPDATE aluno " +
+                         "SET nome = ?," +
+                             "idade = ?," +
+                             "estado = ?" +
+                         "WHERE id = ?";
+
+            PreparedStatement prst = conn.prepareStatement(sql);
+            prst.setString(1, aluno.getNome());
+            prst.setInt(2, aluno.getIdade());
+            prst.setString(3, aluno.getEstado());
+            prst.setInt(4, aluno.getId());
+
+            int rowsAffected = prst.executeUpdate();
+
+            System.out.println(rowsAffected + " registros foram atualizados");
+        } catch (SQLException e) {
+            System.out.println("ERRO: Atualização falhou");
+            e.printStackTrace();
+        }
+    }
 }
