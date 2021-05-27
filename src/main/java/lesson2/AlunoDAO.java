@@ -76,4 +76,21 @@ public class AlunoDAO {
             e.printStackTrace();
         }
     }
+
+    // 4 - Delete
+    public void delete(int id) {
+        try (Connection conn = ConnectionFactory.getConnection()) {
+            String sql = "DELETE FROM aluno WHERE id = ?";
+
+            PreparedStatement prst = conn.prepareStatement(sql);
+            prst.setInt(1, id);
+
+            int rowsAffected = prst.executeUpdate();
+
+            System.out.println(rowsAffected + " registros foram removidos");
+        } catch (SQLException e) {
+            System.out.println("ERRO: Remoção falhou");
+            e.printStackTrace();
+        }
+    }
 }
