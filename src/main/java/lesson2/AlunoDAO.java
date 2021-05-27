@@ -57,5 +57,23 @@ public class AlunoDAO {
         }
         return aluno;
     }
+
+    // 3 - Inserção
+    public void create(Aluno aluno) {
+        try (Connection conn = ConnectionFactory.getConnection()) {
+            String sql = "INSERT INTO aluno (nome, idade, estado) VALUES (?, ?, ?)";
+
+            PreparedStatement prst = conn.prepareStatement(sql);
+            prst.setString(1, aluno.getNome());
+            prst.setInt(2, aluno.getIdade());
+            prst.setString(3, aluno.getEstado());
+
+            int rowsAffected = prst.executeUpdate();
+
+            System.out.println(rowsAffected + " registros foram adicionados");
+        } catch (SQLException e) {
+            System.out.println("ERRO: Inserção falhou");
+            e.printStackTrace();
+        }
     }
 }
