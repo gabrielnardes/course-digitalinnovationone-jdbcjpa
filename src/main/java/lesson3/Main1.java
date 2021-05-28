@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 public class Main1 {
     public static void main(String[] args) {
         // 1 - Create Entity Manager with factory, pointing to persistence.xml
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("part1-DIO");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("part1");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         // 2 - Create instances
@@ -18,7 +18,7 @@ public class Main1 {
         entityManager.getTransaction().begin();
 
         // 4 - Persist data
-//        entityManager.persist(estadoParaAdicionar);
+        entityManager.persist(estadoParaAdicionar);
         entityManager.persist(alunoParaAdicionar);
 
         // 5 - Commit
