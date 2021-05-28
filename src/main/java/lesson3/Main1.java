@@ -18,7 +18,7 @@ public class Main1 {
         entityManager.getTransaction().begin();
 
         // 4 - Persist data
-        entityManager.persist(estadoParaAdicionar);
+//        entityManager.persist(estadoParaAdicionar);
         entityManager.persist(alunoParaAdicionar);
 
         // 5 - Commit
